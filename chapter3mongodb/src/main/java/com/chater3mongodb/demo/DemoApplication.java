@@ -16,6 +16,8 @@ public class DemoApplication {
 
 
 
+//workflow of the structure
+
 // controller ---->   service ---->    repository
 
 
