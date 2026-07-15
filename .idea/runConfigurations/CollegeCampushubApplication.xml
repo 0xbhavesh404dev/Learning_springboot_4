@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="CollegeCampushubApplication" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.bhavesh.college_campushub.CollegeCampushubApplication" />
+    <option name="VM_PARAMETERS" value="" />
+    <option name="PROGRAM_PARAMETERS" value="" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/college_campushub" />
+    <module name="college_campushub" />
+    <envs />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
