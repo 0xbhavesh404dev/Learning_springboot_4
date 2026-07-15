@@ -20,6 +20,7 @@ public class Course {
 
     private int credits;
 
+
     @DBRef
     private Professor professor;
 
