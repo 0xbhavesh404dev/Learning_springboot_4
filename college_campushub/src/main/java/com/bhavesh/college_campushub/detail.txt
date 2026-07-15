@@ -1,0 +1,37 @@
+                    +----------------------+
+                    |      Department      |
+                    +----------------------+
+                    | id                   |
+                    | departmentName       |
+                    | departmentCode       |
+                    +----------------------+
+                              ▲
+                    @DBRef    │
+                 ┌────────────┴────────────┐
+                 │                         │
+                 │                         │
+      +---------------------+    +----------------------+
+      |      Professor      |    |       Student        |
+      +---------------------+    +----------------------+
+      | id                  |    | id                   |
+      | name                |    | name                 |
+      | email               |    | email                |
+      | phone               |    | phone                |
+      | designation         |    | semester             |
+      | department (@DBRef) |    | department (@DBRef)  |
+      +---------------------+    +----------------------+
+                 ▲
+                 │
+           @DBRef│
+                 │
+        +----------------------+
+        |        Course        |
+        +----------------------+
+        | id                   |
+        | courseName           |
+        | courseCode           |
+        | credits              |
+        | professor (@DBRef)   |
+        | department (@DBRef)  |
+        +----------------------+
+
