@@ -13,6 +13,9 @@
         <module name="chapter4_linking_two_databases" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="college_campushub" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
