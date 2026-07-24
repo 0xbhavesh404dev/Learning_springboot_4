@@ -41,9 +41,7 @@ public class StudentService {
             Optional<Student> optionalStudent = studentRepository.findById(id);
 
             if (optionalStudent.isPresent()) {
-
                 Student student = optionalStudent.get();
-
                 student.setName(updatedStudent.getName());
                 student.setEmail(updatedStudent.getEmail());
                 student.setPhone(updatedStudent.getPhone());
