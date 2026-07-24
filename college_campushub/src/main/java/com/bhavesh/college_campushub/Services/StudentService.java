@@ -38,7 +38,6 @@ public class StudentService {
     public Student updateStudent(String id, Student updatedStudent){
         try {
 
-
             Optional<Student> optionalStudent = studentRepository.findById(id);
 
             if (optionalStudent.isPresent()) {
