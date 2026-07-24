@@ -4,6 +4,7 @@ import com.bhavesh.college_campushub.Repository.CourseRepository;
 import com.bhavesh.college_campushub.entity.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,8 +16,14 @@ public class CourseService {
     private CourseRepository courseRepository;
 
     // Create
+    @Transactional
     public Course saveCourse(Course course){
-        return courseRepository.save(course);
+        try {
+            return courseRepository.save(course);
+        }
+        catch (Exception e) {
+            throw new RuntimeException("Failed to save course: " + e.getMessage());
+        }
     }
 
     // Get All
@@ -30,24 +37,30 @@ public class CourseService {
     }
 
     // Update
+    @Transactional
     public Course updateCourse(String id, Course updatedCourse){
+        try {
 
-        Optional<Course> optionalCourse = courseRepository.findById(id);
+            Optional<Course> optionalCourse = courseRepository.findById(id);
 
-        if(optionalCourse.isPresent()){
+            if (optionalCourse.isPresent()) {
 
-            Course course = optionalCourse.get();
+                Course course = optionalCourse.get();
 
-            course.setCourseName(updatedCourse.getCourseName());
-            course.setCourseCode(updatedCourse.getCourseCode());
-            course.setCredits(updatedCourse.getCredits());
-            course.setProfessor(updatedCourse.getProfessor());
-            course.setDepartment(updatedCourse.getDepartment());
+                course.setCourseName(updatedCourse.getCourseName());
+                course.setCourseCode(updatedCourse.getCourseCode());
+                course.setCredits(updatedCourse.getCredits());
+                course.setProfessor(updatedCourse.getProfessor());
+                course.setDepartment(updatedCourse.getDepartment());
 
-            return courseRepository.save(course);
+                return courseRepository.save(course);
+            }
+
+            return null;
         }
-
-        return null;
+        catch (Exception e) {
+            throw new RuntimeException("Failed to update course: " + e.getMessage());
+        }
     }
 
     // Delete
