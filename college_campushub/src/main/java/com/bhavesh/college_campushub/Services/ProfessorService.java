@@ -16,7 +16,12 @@ public class ProfessorService {
 
     // Create
     public Professor saveProfessor(Professor professor){
-        return professorRepository.save(professor);
+        try {
+            return professorRepository.save(professor);
+        }
+        catch (Exception e) {
+            throw new RuntimeException("Failed to save professor: " + e.getMessage());
+        }
     }
 
     // Get All
@@ -31,23 +36,28 @@ public class ProfessorService {
 
     // Update
     public Professor updateProfessor(String id, Professor updatedProfessor){
+        try {
 
-        Optional<Professor> optionalProfessor = professorRepository.findById(id);
+            Optional<Professor> optionalProfessor = professorRepository.findById(id);
 
-        if(optionalProfessor.isPresent()){
+            if (optionalProfessor.isPresent()) {
 
-            Professor professor = optionalProfessor.get();
+                Professor professor = optionalProfessor.get();
 
-            professor.setName(updatedProfessor.getName());
-            professor.setEmail(updatedProfessor.getEmail());
-            professor.setPhone(updatedProfessor.getPhone());
-            professor.setDesignation(updatedProfessor.getDesignation());
-            professor.setDepartment(updatedProfessor.getDepartment());
+                professor.setName(updatedProfessor.getName());
+                professor.setEmail(updatedProfessor.getEmail());
+                professor.setPhone(updatedProfessor.getPhone());
+                professor.setDesignation(updatedProfessor.getDesignation());
+                professor.setDepartment(updatedProfessor.getDepartment());
 
-            return professorRepository.save(professor);
+                return professorRepository.save(professor);
+            }
+
+            return null;
         }
-
-        return null;
+        catch (Exception e) {
+            throw new RuntimeException("Failed to update professor: " + e.getMessage());
+        }
     }
 
     // Delete

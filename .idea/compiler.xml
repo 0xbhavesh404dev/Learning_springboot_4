@@ -12,14 +12,21 @@
         <module name="demo" />
         <module name="chapter4_linking_two_databases" />
       </profile>
+      <profile name="Annotation profile for College CampusHub" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+        </processorPath>
+        <module name="college_campushub" />
+      </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="college_campushub" target="17" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="chapter4_linking_two_databases" options="-parameters" />
+      <module name="college_campushub" options="-parameters" />
       <module name="com.chater3mongodb" options="-parameters" />
       <module name="demo" options="-parameters" />
       <module name="journalApp" options="-parameters" />
