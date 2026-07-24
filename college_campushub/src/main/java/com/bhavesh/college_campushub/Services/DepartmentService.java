@@ -4,6 +4,7 @@ import com.bhavesh.college_campushub.Repository.DepartmentRepository;
 import com.bhavesh.college_campushub.entity.Department;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,8 +16,14 @@ public class DepartmentService {
     private DepartmentRepository departmentRepository;
 
     // Create
+    @Transactional
     public Department saveDepartment(Department department) {
-        return departmentRepository.save(department);
+        try {
+            return departmentRepository.save(department);
+        }
+        catch (Exception e) {
+            throw new RuntimeException("Department could not be saved");
+        }
     }
 
     // Get All
@@ -30,21 +37,27 @@ public class DepartmentService {
     }
 
     // Update
+    @Transactional
     public Department updateDepartment(String id, Department updatedDepartment) {
+        try {
 
-        Optional<Department> optionalDepartment = departmentRepository.findById(id);
+            Optional<Department> optionalDepartment = departmentRepository.findById(id);
 
-        if(optionalDepartment.isPresent()){
+            if (optionalDepartment.isPresent()) {
 
-            Department department = optionalDepartment.get();
+                Department department = optionalDepartment.get();
 
-            department.setDepartmentName(updatedDepartment.getDepartmentName());
-            department.setDepartmentCode(updatedDepartment.getDepartmentCode());
+                department.setDepartmentName(updatedDepartment.getDepartmentName());
+                department.setDepartmentCode(updatedDepartment.getDepartmentCode());
 
-            return departmentRepository.save(department);
+                return departmentRepository.save(department);
+            }
+
+            return null;
         }
-
-        return null;
+        catch (Exception e) {
+            throw new RuntimeException("Failed to update department: " + e.getMessage());
+        }
     }
 
     // Delete
