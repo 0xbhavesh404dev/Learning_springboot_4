@@ -16,7 +16,12 @@ public class StudentService {
 
     // Create
     public Student saveStudent(Student student){
-        return studentRepository.save(student);
+        try {
+            return studentRepository.save(student);
+        }
+        catch (Exception e) {
+            throw new RuntimeException("Failed to save student: " + e.getMessage());
+        }
     }
 
     // Get All
@@ -31,23 +36,28 @@ public class StudentService {
 
     // Update
     public Student updateStudent(String id, Student updatedStudent){
+        try {
 
-        Optional<Student> optionalStudent = studentRepository.findById(id);
+            Optional<Student> optionalStudent = studentRepository.findById(id);
 
-        if(optionalStudent.isPresent()){
+            if (optionalStudent.isPresent()) {
 
-            Student student = optionalStudent.get();
+                Student student = optionalStudent.get();
 
-            student.setName(updatedStudent.getName());
-            student.setEmail(updatedStudent.getEmail());
-            student.setPhone(updatedStudent.getPhone());
-            student.setSemester(updatedStudent.getSemester());
-            student.setDepartment(updatedStudent.getDepartment());
+                student.setName(updatedStudent.getName());
+                student.setEmail(updatedStudent.getEmail());
+                student.setPhone(updatedStudent.getPhone());
+                student.setSemester(updatedStudent.getSemester());
+                student.setDepartment(updatedStudent.getDepartment());
 
-            return studentRepository.save(student);
+                return studentRepository.save(student);
+            }
+
+            return null;
         }
-
-        return null;
+        catch (Exception e) {
+            throw new RuntimeException("Failed to update student: " + e.getMessage());
+        }
     }
 
     // Delete
