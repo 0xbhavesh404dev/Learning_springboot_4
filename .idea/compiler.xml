@@ -11,6 +11,7 @@
         <module name="com.chater3mongodb" />
         <module name="demo" />
         <module name="chapter4_linking_two_databases" />
+        <module name="college_campushub (1)" />
       </profile>
       <profile name="Annotation profile for College CampusHub" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
