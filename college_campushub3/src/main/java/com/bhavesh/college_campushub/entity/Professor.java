@@ -1,5 +1,6 @@
 package com.bhavesh.college_campushub.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -7,22 +8,21 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "course")
-public class Course {
+@Document(collection = "professor")
+public class Professor {
 
     @Id
     private String id;
 
-    private String courseName;
+    private String name;
 
-    private String courseCode;
+    private String email;
 
-    private int credits;
+    private String phone;
 
-
-    @DBRef
-    private Professor professor;
+    private String designation;
 
     @DBRef
     private Department department;
